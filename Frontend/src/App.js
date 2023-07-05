@@ -12,6 +12,8 @@ import Resume1 from './components/Templates/Resume/Resume1';
 import Resume2 from './components/Templates/Resume/Resume2';
 import OfferLetter1 from './components/Templates/Offer Letter/OfferLetter';
 import OfferLetter from './components/UI/Forms/OfferLetter/OfferLetter';
+import PrivacyPolicy from './components/UI/Policies/PrivacyPolicy';
+import TermsOfServices from './components/UI/Policies/TermsOfServices';
 
 function App() {
 
@@ -21,7 +23,7 @@ function App() {
 
   const getUser = async() => {
     try {
-      const url = `http://localhost:5001/auth/login/success`;
+      const url = `http://localhost:5011/auth/login/success`;
       const {data} = await axios.get(url, {withCredentials: true});
       console.log(data);
 
@@ -58,6 +60,8 @@ function App() {
         <Navbar user={user}/>
       )}
       <Routes>
+        <Route exact path='/privacy-policy' element={<PrivacyPolicy/>}/>
+        <Route exact path='/terms-of-services' element={<TermsOfServices/>}/>
         <Route exact path='/login' element={!user ? <Login/> : <Navigate to='/'/>}/>
         <Route exact path='/' element={
           <div>

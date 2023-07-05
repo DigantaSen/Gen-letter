@@ -18,7 +18,7 @@ function Resume() {
 
   const navigate = useNavigate();
 
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(1);
 
   const [refs, setRefs] = useState({
     fnameRef: '',
@@ -83,7 +83,7 @@ function Resume() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:5001/edit/resume/${id}`)
+      axios.get(`http://localhost:5011/edit/resume/${id}`)
         .then((response) => {
           console.log(response.data);
           setRefs(response.data);
@@ -264,10 +264,10 @@ function Resume() {
     const obj = {
       fname: refs.fnameRef,
       lname: refs.lnameRef,
-      roll: refs.rollnoRef,
+      rollNo: refs.rollnoRef,
       links: refs.linksRef,
       email: refs.emailRef,
-      phone: refs.phoneRef,
+      phoneNo: refs.phoneRef,
       education: refs.educationRef,
       workex: refs.workexRef,
       projects: refs.projectsRef,
@@ -323,7 +323,7 @@ function Resume() {
       }]
     });
 
-    await fetch('http://localhost:5001/resume', {
+    await fetch('http://localhost:5011/resume', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -339,41 +339,41 @@ function Resume() {
   let content = '';
 
   switch(index) {
-    case 10: content = (
-      <ResumeTemplate nextStep={nextStep} prevStep={prevStep} values={refs} formSubmitted={handleSubmit}/>
-    )
-      break;
-    case 2: content = (
+    case 1: content = (
       <PersonalDetails onChange={handleChange} title='Personal Details' nextStep={nextStep} prevStep={prevStep} values={refs} />
     );
       break;
-    case 3: content = (
+    case 2: content = (
       <Links onChange={handleArrayChange} title='Profile Links' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldAddHandler} decrease={fieldRemoveHandler}></Links>
     );
       break;
-    case 4: content = (
+    case 3: content = (
       <EducationDetails onChange={handleArrayChange} title='Educational Details' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldAddHandler} decrease={fieldRemoveHandler}/>
     );
       break;
-    case 5: content = (
+    case 4: content = (
       <WorkExperience onChange={handleArrayChange} title='Work Experience' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldArrayAddHandler} decrease={fieldRemoveHandler} increaseLink={linkIncreaseHandler} decreaseLink={linkDecreaseHandler} onChangeLink={handleLinkChange}/>
     );
       break;
-    case 6: content = (
+    case 5: content = (
       <Projects onChange={handleArrayChange} title='Projects' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldArrayAddHandler} decrease={fieldRemoveHandler} increaseLink={linkIncreaseHandler} decreaseLink={linkDecreaseHandler} onChangeLink={handleLinkChange}/>
     );
       break;
-    case 7: content = (
+    case 6: content = (
       <Achievements onChange={handleArrayChange} title='Academic Achievements and Awards' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldArrayAddHandler} decrease={fieldRemoveHandler} increaseLink={linkIncreaseHandler} decreaseLink={linkDecreaseHandler} onChangeLink={handleLinkChange}/>
     );
       break;
-    case 8: content = (
+    case 7: content = (
       <Skills onChange={handleSkillChange} title='Technical Skills' nextStep={nextStep} prevStep={prevStep} values={refs} increase={skillFieldAddHandler} decrease={skillFieldRemoveHandler}/>
     );
       break;
-    case 9: content = (
+    case 8: content = (
       <POR onChange={handleArrayChange} title='Position of Responsibilities' nextStep={nextStep} prevStep={prevStep} values={refs} increase={fieldArrayAddHandler} decrease={fieldRemoveHandler} increaseLink={linkIncreaseHandler} decreaseLink={linkDecreaseHandler} onChangeLink={handleLinkChange}/>
     );
+      break;
+    case 9: content = (
+      <ResumeTemplate nextStep={nextStep} prevStep={prevStep} values={refs} formSubmitted={handleSubmit} />
+    )
       break;
     default: content = (
       <FinalPage title='Thank You!' />

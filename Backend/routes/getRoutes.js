@@ -31,7 +31,7 @@ router.get('/resume/:id', async(req, res) => {
 
 router.get('/offer_letter/:id', async(req,res) => {
     const id = req.params.id;
-    const getOfferLetter = await OfferLetter.findOne({_id: mongoose.Types.ObjectId(id)});
+    const getOfferLetter = await OfferLetter.findOne({_id: new mongoose.Types.ObjectId(id)});
     if(getOfferLetter) {
         const obj = {
             candidateDetails: getOfferLetter.candidateDetails,

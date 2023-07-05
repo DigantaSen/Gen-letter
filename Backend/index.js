@@ -10,7 +10,7 @@ const authRoute = require('./routes/auth');
 const resumeRoute = require('./routes/resumeDataHandler');
 const offerLetterRoute = require('./routes/offerLetterDataHandler');
 const getRoutes = require('./routes/getRoutes');
-const port = 5001 || process.env.PORT;
+const port = 5011 || process.env.PORT;
 const connectDB = require('./config/db');
 const session = require('express-session');
 connectDB();

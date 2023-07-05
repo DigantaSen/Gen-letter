@@ -6,7 +6,7 @@ import Navbaritem from './Navbatitem';
 const Navbar = (props) => {
 
   const logout = () => {
-    window.open(`http://localhost:5001/auth/logout`, '_self')
+    window.open(`http://localhost:5011/auth/logout`, '_self')
   }
 
   return (
